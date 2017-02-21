@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Science Museum Quiz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="css/reset.css" charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" charset="utf-8">
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/mustache.min.js"></script>
+    <script src="js/scripts.js" charset="utf-8"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <main>
+
+        <div class="wrapper">
+
+            <header class="header">
+                <a href="#intro" class="header_logo hl">SCIENCE MUSEUM</a>
+            </header>
+
+            <section class="screen screen--initial" data-screen="intro">
+                <h1 class="logo">UNDEFINED</h2>
+                <a href="#play" class="btn">SINGLE PLAYER</a>
+            </section>
+
+            <section class="screen" data-screen="play">
+                <h1>Play</h1>
+                <a href="#done" class="btn">Finish</a>
+            </section>
+
+            <section class="screen" data-screen="done">
+                <h1>Sweeet</h1>
+                <a href="#intro" class="btn">Restart</a>
+            </section>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
