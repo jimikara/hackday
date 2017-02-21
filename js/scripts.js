@@ -7,16 +7,49 @@ var Quiz = {
         this.cacheDom();
         this.settings();
         this.bindEvents();
+
+        // this.getQuestion();
     },
 
     settings: function(){
+        this.api = 'http://34.194.223.110/api';
     },
 
     cacheDom: function(){
+        this.$el = $('#play');
     },
 
     bindEvents: function(){
 
+        // Catch the show-screen event
+        this.$el.on('show', this.start.bind(this));
+    },
+
+    start: function(){
+
+        var that = this;
+
+        this.answer  = "";
+        this.turns   = 0;
+        this.correct = 0;
+        this.steak   = 0;
+
+        this.render();
+    },
+
+    render: function() {
+        console.log('now');
+    },
+
+    getQuestion: function(){
+
+        $.when(
+            $.ajax({
+                url: this.api + '/questions/',
+            })
+        ).done(function(result){
+            console.log(result);
+        });
     }
 
 }
