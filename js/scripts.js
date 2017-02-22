@@ -22,7 +22,7 @@ var Quiz = {
         this.$logo      = this.$header.find('.header_logo');
         this.$countdown = this.$header.find('.countdown');
 
-        this.$loadNewQ = this.$el.find('.quiz-loadNewQ');
+        this.$loadNewQ = this.$el.find('.quiz-loadNewQ'); // temp
         this.interval;
     },
 
@@ -30,6 +30,9 @@ var Quiz = {
 
         // Catch the show-screen event
         this.$el.on('show', this.start.bind(this));
+
+        // Catch Answer
+        this.$el.on('click', 'figure', this.selectAnswer.bind(this));
 
         // Load new question
         this.$loadNewQ.on('click', this.loadNewQuestion.bind(this));
@@ -41,8 +44,9 @@ var Quiz = {
 
         this.turns   = 0;
         this.correct = 0;
+        this.questionNumber = false;
 
-        this.startCountdown(60 * 1, this.$countdown);
+        this.startCountdown(20 * 1, this.$countdown);
         this.render();
     },
 
@@ -75,18 +79,16 @@ var Quiz = {
     finish() {
         clearInterval(this.interval);
         this.$header.removeClass('running');
+        results.render();
         screens.triggerScreen('done');
-
     },
 
     renderQuestion(data){
-
         data.splitDesc = this.splitText(data.text)
 
         this.$wrap.html(
             Mustache.render(this.template, data)
         );
-
     },
 
     loadNewQuestion(e){
@@ -96,6 +98,8 @@ var Quiz = {
                 url: this.api + '/questions/',
             })
         ).done(function(data){
+            this.questionNumber = data.questionNumber;
+            this.correctId = data.correctId;
             this.renderQuestion(data);
         }.bind(this));
 
@@ -103,6 +107,27 @@ var Quiz = {
             e.preventDefault();
         }
     },
+
+    selectAnswer: function(e){
+
+        if (this.correctId === $(e.target).data('id')) {
+            this.correct++;
+        }
+
+        this.turns++;
+
+        this.loadNewQuestion();
+
+        // $.ajax({
+        //     url: this.api + '/questions/' + this.questionNumber + '/' + $(e.target).data('id'),
+        //     dataType: "json",
+        //     method: "POST",
+        //     xhrFields: {
+        //         withCredentials: true
+        //     },
+        // })
+    },
+
 
     splitText(text){
 
@@ -115,6 +140,34 @@ var Quiz = {
 
         return r.join("");
     }
+
+}
+
+/* RESULTS
+--------------------------------------- */
+
+var results = {
+
+    init: function(){
+        this.cacheDom();
+        this.render();
+    },
+
+    cacheDom: function(){
+        this.$el      = $('#results');
+        this.wrap     = this.$el.find('.result-wrap');
+        this.template = this.$el.find('#results-template').html();
+    },
+
+    render: function(){
+
+        var data = {
+            correct: Quiz.correct,
+            turns: Quiz.turns
+        }
+
+        this.wrap.html(Mustache.render(this.template, data))
+    },
 
 }
 
@@ -182,4 +235,5 @@ var screens = {
 $(function(){
     Quiz.init();
     screens.init();
+    results.init();
 })

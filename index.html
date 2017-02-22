@@ -23,13 +23,20 @@
         <div class="wrapper">
 
             <header class="header">
-                <a href="#intro" class="header_logo hl">SCIENCE MUSEUM</a>
+                <a href="#intro" class="header_logo hl">#SMHACK</a>
                 <div class="countdown hl"></div>
             </header>
 
             <section class="screen screen--initial" data-screen="intro">
-                <h1 class="logo">UNDEFINED</h2>
-                <a href="#play" class="btn">SINGLE PLAYER</a>
+
+                <img src="./img/logo.png" class="logo" />
+
+                <p class="p20 fs-large">
+                    Three images are shown as an artifact description fades into view.
+                    Tap the image that matches the description as quickly as you can!
+                </p>
+
+                <a href="#play" class="btn">GO</a>
             </section>
 
             <section class="screen" data-screen="play" id="play">
@@ -43,7 +50,7 @@
                                 {{#images}}
                                     {{#.}}
                                         <figure>
-                                            <img src="{{image}}" />
+                                            <img src="{{image}}" data-id="{{id}}" />
                                         </figure>
                                     {{/.}}
                                 {{/images}}
@@ -64,9 +71,27 @@
 
             </section>
 
-            <section class="screen" data-screen="done">
-                <h1>Sweeet</h1>
+            <section class="screen" data-screen="done" id="results">
+
+                <h1 class="mt80">Time's Up!</h1>
+
+                <div class="result-wrap">
+
+                    <script id="results-template" type="text/template">
+
+                        <div class="final-score">
+                            <h2>You got...</h2>
+                            <span class="score">
+                                {{correct}}/{{turns}}
+                            </span>
+                        </div>
+
+                    </script>
+
+                </div>
+
                 <a href="#intro" class="btn">Restart</a>
+
             </section>
 
         </div>

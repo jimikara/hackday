@@ -41,10 +41,10 @@ main {
   background: white;
   padding-top: 64px;
   height: 100%;
-  max-height: 660px;
+  max-height: 640px;
   width: 100%;
   position: relative;
-  min-height: 660px; }
+  min-height: 640px; }
 
 /*
     MODULE: HEADER
@@ -55,7 +55,7 @@ main {
   width: 100%;
   top: 0;
   position: absolute;
-  background: #999;
+  background: #564d4d;
   max-width: inherit;
   display: flex;
   align-items: center; }
@@ -101,6 +101,19 @@ main {
 .screen--initial {
   display: block; }
 
+.screen--initial {
+  background: linear-gradient(to bottom, #feffff, #dcdcdc);
+  position: absolute;
+  height: 100%; }
+
+.final-score {
+  padding: 60px 0;
+  color: #2c97de; }
+  .final-score h2 {
+    margin-bottom: 2rem; }
+  .final-score span {
+    font-size: 10rem; }
+
 /*
     TYPE
 */
@@ -117,22 +130,33 @@ h2 {
   font-size: 3rem; }
 
 .logo {
-  margin-top: 100px;
-  margin-bottom: 200px; }
+  margin-top: 0px;
+  width: 200px;
+  margin-top: 50px;
+  animation: fadeinDrop 1s; }
+
+.fs-large {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: #6d6d6d; }
 
 /*
     BUTTONS
 */
 .btn {
   display: inline-block;
-  background: #ff5976;
+  background: #04C3F9;
   color: white;
   text-align: center;
-  padding: 25px 35px;
+  padding: 20px 35px;
   border-radius: 5px;
   font-weight: bold;
   border: none;
   transition: opacity 0.2s;
+  animation: fadeinDrop 1.5s;
+  display: flex;
+  margin: 20px;
+  justify-content: center;
   animation: fadeinDrop 1.5s; }
   .btn:hover {
     opacity: 0.75; }
@@ -141,6 +165,12 @@ h2 {
   padding: 10px; }
 
 /* Helpers */
+.p20 {
+  padding: 20px; }
+
+.mt80 {
+  margin-top: 80px; }
+
 /* Quiz */
 .quiz-wrap .quiz-imageWrap .quiz-images {
   display: flex;
@@ -161,7 +191,7 @@ h2 {
     margin-right: 5px;
     float: left;
     opacity: 0;
-    animation: fadeinDrop 2.5s;
+    animation: fadeinDrop 1.5s;
     animation-direction: forwards;
     animation-fill-mode: forwards; }
     .quiz-wrap .quiz-description span.s1 {
