@@ -45,8 +45,9 @@ var Quiz = {
         this.turns   = 0;
         this.correct = 0;
         this.questionNumber = false;
+        this.answers = [];
 
-        this.startCountdown(2 * 1, this.$countdown);
+        this.startCountdown(60 * 1, this.$countdown);
         this.render();
     },
 
@@ -86,6 +87,7 @@ var Quiz = {
     renderQuestion(data){
         data.splitDesc = this.splitText(data.text)
         data.score = this.turns;
+        data.answers = this.answers.reverse();
 
         this.$wrap.html(
             Mustache.render(this.template, data)
@@ -113,6 +115,9 @@ var Quiz = {
 
         if (this.correctId === $(e.target).data('id')) {
             this.correct++;
+            this.answers.push(1);
+        } else {
+            this.answers.push(0);
         }
 
         this.turns++;
