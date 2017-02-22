@@ -7,6 +7,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Science Museum Image/Description game" />
+    <meta property="og:description" content="Check out my score" />
+    <meta property="og:image" content="img/logo.png" /> 
     <link rel="stylesheet" href="css/reset.css" charset="utf-8">
     <link rel="stylesheet" href="css/style.css" charset="utf-8">
     <script src="js/jquery-2.2.4.min.js"></script>
@@ -17,6 +22,15 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=264898893932146";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <main>
 
@@ -94,6 +108,8 @@
                                 {{inWords}}
                             </div>
                         </div>
+                         <div class="fb-share-button" data-href="http://34.194.223.110/index.html" 
+                        data-layout="button">Share</a></div>
 
                     </script>
 
