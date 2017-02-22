@@ -161,19 +161,29 @@ h2 {
     margin-right: 5px;
     float: left;
     opacity: 0;
-    animation: fadeinDrop 1s;
+    animation: fadeinDrop 2.5s;
     animation-direction: forwards;
     animation-fill-mode: forwards; }
     .quiz-wrap .quiz-description span.s1 {
-      animation-delay: 1s; }
+      animation-delay: 0s; }
     .quiz-wrap .quiz-description span.s2 {
-      animation-delay: 2s; }
+      animation-delay: 1s; }
     .quiz-wrap .quiz-description span.s3 {
-      animation-delay: 3s; }
+      animation-delay: 2s; }
     .quiz-wrap .quiz-description span.s4 {
-      animation-delay: 4s; }
+      animation-delay: 3s; }
     .quiz-wrap .quiz-description span.s5 {
-      animation-delay: 5s; }
+      animation-delay: 4s; }
+    .quiz-wrap .quiz-description span.s6 {
+      animation-delay: 0.5s; }
+    .quiz-wrap .quiz-description span.s7 {
+      animation-delay: 1.5s; }
+    .quiz-wrap .quiz-description span.s8 {
+      animation-delay: 2.5s; }
+    .quiz-wrap .quiz-description span.s9 {
+      animation-delay: 3.5s; }
+    .quiz-wrap .quiz-description span.s10 {
+      animation-delay: 4.5s; }
 
 .quiz-footer {
   margin-top: 30px;

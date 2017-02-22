@@ -23,6 +23,7 @@ var Quiz = {
         this.$countdown = this.$header.find('.countdown');
 
         this.$loadNewQ = this.$el.find('.quiz-loadNewQ');
+        this.interval;
     },
 
     bindEvents: function(){
@@ -41,7 +42,7 @@ var Quiz = {
         this.turns   = 0;
         this.correct = 0;
 
-        this.startCountdown(105 * 1, this.$countdown);
+        this.startCountdown(60 * 1, this.$countdown);
         this.render();
     },
 
@@ -51,7 +52,7 @@ var Quiz = {
 
         var timer = duration, minutes, seconds;
 
-        var interVal = setInterval(function () {
+        this.interval = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
@@ -61,9 +62,7 @@ var Quiz = {
             display.text(minutes + ":" + seconds);
 
             if (--timer < 0) {
-                clearInterval(interVal);
-                this.$header.removeClass('running');
-                screens.triggerScreen('done');
+                this.finish();
             }
         }.bind(this), 1000);
 
@@ -71,6 +70,13 @@ var Quiz = {
 
     render: function() {
         this.loadNewQuestion()
+    },
+
+    finish() {
+        clearInterval(this.interval);
+        this.$header.removeClass('running');
+        screens.triggerScreen('done');
+
     },
 
     renderQuestion(data){
@@ -100,7 +106,7 @@ var Quiz = {
 
     splitText(text){
 
-        var speeds = ['s1', 's2', 's3', 's4', 's5'];
+        var speeds = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'];
 
         var r = $.map(text.split(' '), function(word){
             var speed  = Math.floor(Math.random() * speeds.length);

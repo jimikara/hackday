@@ -159,25 +159,20 @@ h2 { font-size: 3rem; }
             margin-right: 5px;
             float: left;
             opacity: 0;
-            animation: fadeinDrop 1s;
+            animation: fadeinDrop 2.5s;
             animation-direction: forwards;
             animation-fill-mode: forwards;
 
-            &.s1 {
-                animation-delay: 1s;
-            }
-            &.s2 {
-                animation-delay: 2s;
-            }
-            &.s3 {
-                animation-delay: 3s;
-            }
-            &.s4 {
-                animation-delay: 4s;
-            }
-            &.s5 {
-                animation-delay: 5s;
-            }
+            &.s1 { animation-delay: 0s; }
+            &.s2 { animation-delay: 1s; }
+            &.s3 { animation-delay: 2s; }
+            &.s4 { animation-delay: 3s; }
+            &.s5 { animation-delay: 4s; }
+            &.s6 { animation-delay: 0.5s; }
+            &.s7 { animation-delay: 1.5s; }
+            &.s8 { animation-delay: 2.5s; }
+            &.s9 { animation-delay: 3.5s; }
+            &.s10 { animation-delay: 4.5s; }
         }
 
 
