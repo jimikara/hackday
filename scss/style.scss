@@ -77,13 +77,24 @@
     MODULE: SCREENS
 */
 
-.screen { display: none; position: relative; }
+.screen { display: none; position: absolute; height: 100%; width: 100%; }
 .screen--initial { display: block; }
 
 .screen--initial {
-    background: linear-gradient(to bottom, #feffff, #dcdcdc);
     position: absolute;
     height: 100%;
+}
+
+.score {
+    background: #2491f1;
+    width: 50px;
+    height: 50px;
+    color: white;
+    position: absolute;
+    bottom: 63px;
+    font-size: 2rem;
+    padding: 16px;
+    font-weight: 100;
 }
 
 .final-score {

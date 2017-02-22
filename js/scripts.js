@@ -46,7 +46,7 @@ var Quiz = {
         this.correct = 0;
         this.questionNumber = false;
 
-        this.startCountdown(20 * 1, this.$countdown);
+        this.startCountdown(2 * 1, this.$countdown);
         this.render();
     },
 
@@ -85,6 +85,7 @@ var Quiz = {
 
     renderQuestion(data){
         data.splitDesc = this.splitText(data.text)
+        data.score = this.turns;
 
         this.$wrap.html(
             Mustache.render(this.template, data)
@@ -118,14 +119,6 @@ var Quiz = {
 
         this.loadNewQuestion();
 
-        // $.ajax({
-        //     url: this.api + '/questions/' + this.questionNumber + '/' + $(e.target).data('id'),
-        //     dataType: "json",
-        //     method: "POST",
-        //     xhrFields: {
-        //         withCredentials: true
-        //     },
-        // })
     },
 
 
@@ -163,11 +156,32 @@ var results = {
 
         var data = {
             correct: Quiz.correct,
-            turns: Quiz.turns
+            turns: Quiz.turns,
+            inWords: this.rateQuiz(Quiz.correct, Quiz.turns)
         }
 
         this.wrap.html(Mustache.render(this.template, data))
     },
+
+    rateQuiz(correct, total) {
+        // find ratio
+        var ratio = Math.round((correct / total) * 10);
+        if (ratio >= 8) {
+            return "Impressive Stuff!";
+        }
+        else if (ratio >= 6 && ratio < 8) {
+            return "Solid work";
+        }
+        else if (ratio >= 4 && ratio < 6) {
+            return "Not too bad..";
+        }
+        else if (ratio >= 1 && ratio < 4) {
+            return "Better luck next time";
+        }
+        else {
+            return "What happened?!";
+        }
+    }
 
 }
 

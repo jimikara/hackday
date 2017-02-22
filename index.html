@@ -61,12 +61,12 @@
                             {{{splitDesc}}}
                         </div>
 
+                        <div class="score">
+                            {{score}}
+                        </div>
+
                     </script>
 
-                </div>
-
-                <div class="quiz-footer">
-                    <a href="#" class="btn quiz-loadNewQ">Get new question</a>
                 </div>
 
             </section>
@@ -81,9 +81,12 @@
 
                         <div class="final-score">
                             <h2>You got...</h2>
-                            <span class="score">
+                            <span>
                                 {{correct}}/{{turns}}
                             </span>
+                            <div>
+                                {{inWords}}
+                            </div>
                         </div>
 
                     </script>
