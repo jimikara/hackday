@@ -7,8 +7,6 @@ var Quiz = {
         this.cacheDom();
         this.settings();
         this.bindEvents();
-
-        // this.getQuestion();
     },
 
     settings: function(){
@@ -43,7 +41,7 @@ var Quiz = {
         this.turns   = 0;
         this.correct = 0;
 
-        this.startCountdown(5 * 1, this.$countdown);
+        this.startCountdown(105 * 1, this.$countdown);
         this.render();
     },
 
@@ -76,6 +74,9 @@ var Quiz = {
     },
 
     renderQuestion(data){
+
+        data.splitDesc = this.splitText(data.text)
+
         this.$wrap.html(
             Mustache.render(this.template, data)
         );
@@ -97,15 +98,16 @@ var Quiz = {
         }
     },
 
-    getQuestion: function(){
+    splitText(text){
 
-        $.when(
-            $.ajax({
-                url: this.api + '/questions/',
-            })
-        ).done(function(result){
-            console.log(result);
-        });
+        var speeds = ['s1', 's2', 's3', 's4', 's5'];
+
+        var r = $.map(text.split(' '), function(word){
+            var speed  = Math.floor(Math.random() * speeds.length);
+            return '<span class="' + speeds[speed] + '">' + word + '</span>';
+        })
+
+        return r.join("");
     }
 
 }

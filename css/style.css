@@ -154,7 +154,32 @@ h2 {
       object-fit: cover;
       height: 100%; }
 .quiz-wrap .quiz-description {
-  padding: 20px; }
+  padding: 20px;
+  overflow: hidden;
+  max-height: 240px; }
+  .quiz-wrap .quiz-description span {
+    margin-right: 5px;
+    float: left;
+    opacity: 0;
+    animation: fadeinDrop 1s;
+    animation-direction: forwards;
+    animation-fill-mode: forwards; }
+    .quiz-wrap .quiz-description span.s1 {
+      animation-delay: 1s; }
+    .quiz-wrap .quiz-description span.s2 {
+      animation-delay: 2s; }
+    .quiz-wrap .quiz-description span.s3 {
+      animation-delay: 3s; }
+    .quiz-wrap .quiz-description span.s4 {
+      animation-delay: 4s; }
+    .quiz-wrap .quiz-description span.s5 {
+      animation-delay: 5s; }
+
+.quiz-footer {
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+  clear: both; }
 
 /* Animations */
 @keyframes fadein {
@@ -162,6 +187,11 @@ h2 {
     opacity: 0; }
   to {
     opacity: 1; } }
+@keyframes fadeinRev {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
 @keyframes fadeinDrop {
   from {
     opacity: 0;

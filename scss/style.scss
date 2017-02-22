@@ -152,8 +152,44 @@ h2 { font-size: 3rem; }
 
     .quiz-description {
         padding: 20px;
+        overflow: hidden;
+        max-height: 240px;
+
+        span {
+            margin-right: 5px;
+            float: left;
+            opacity: 0;
+            animation: fadeinDrop 1s;
+            animation-direction: forwards;
+            animation-fill-mode: forwards;
+
+            &.s1 {
+                animation-delay: 1s;
+            }
+            &.s2 {
+                animation-delay: 2s;
+            }
+            &.s3 {
+                animation-delay: 3s;
+            }
+            &.s4 {
+                animation-delay: 4s;
+            }
+            &.s5 {
+                animation-delay: 5s;
+            }
+        }
+
+
     }
 
+}
+
+.quiz-footer {
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    clear: both;
 }
 
 /* Animations */
@@ -161,6 +197,11 @@ h2 { font-size: 3rem; }
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+@keyframes fadeinRev {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
 
 @keyframes fadeinDrop {
