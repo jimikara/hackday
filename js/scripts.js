@@ -16,9 +16,10 @@ var Quiz = {
     },
 
     cacheDom: function(){
-        this.$el       = $('#play');
-        this.template  = this.$el.find('#quiz-template').html();
-        this.$wrap     = this.$el.find('.quiz-wrap');
+        this.$el        = $('#play');
+        this.template   = this.$el.find('#quiz-template').html();
+        this.$wrap      = this.$el.find('.quiz-wrap');
+        this.$countdown = $('.countdown');
 
         this.$loadNewQ = this.$el.find('.quiz-loadNewQ');
     },
@@ -39,7 +40,30 @@ var Quiz = {
         this.turns   = 0;
         this.correct = 0;
 
+        this.startCountdown(5 * 1, this.$countdown);
         this.render();
+    },
+
+    startCountdown(duration, display) {
+
+        var timer = duration, minutes, seconds;
+
+        var interVal = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            milli   = parseInt(timer % 60 % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.text(minutes + ":" + seconds);
+
+            if (--timer < 0) {
+                clearInterval(interVal);
+                screens.triggerScreen('done');
+            }
+        }.bind(this), 1000);
+
     },
 
     render: function() {
