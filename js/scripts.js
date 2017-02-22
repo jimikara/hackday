@@ -19,7 +19,10 @@ var Quiz = {
         this.$el        = $('#play');
         this.template   = this.$el.find('#quiz-template').html();
         this.$wrap      = this.$el.find('.quiz-wrap');
-        this.$countdown = $('.countdown');
+
+        this.$header    = $('.header');
+        this.$logo      = this.$header.find('.header_logo');
+        this.$countdown = this.$header.find('.countdown');
 
         this.$loadNewQ = this.$el.find('.quiz-loadNewQ');
     },
@@ -46,12 +49,13 @@ var Quiz = {
 
     startCountdown(duration, display) {
 
+        this.$header.addClass('running');
+
         var timer = duration, minutes, seconds;
 
         var interVal = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
-            milli   = parseInt(timer % 60 % 60, 10);
 
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -60,6 +64,7 @@ var Quiz = {
 
             if (--timer < 0) {
                 clearInterval(interVal);
+                this.$header.removeClass('running');
                 screens.triggerScreen('done');
             }
         }.bind(this), 1000);
