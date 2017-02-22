@@ -40,7 +40,7 @@
     MODULE: SCREENS
 */
 
-.screen { display: none; padding: 20px; position: relative; }
+.screen { display: none; position: relative; }
 .screen--initial { display: block; }
 
 /*
@@ -63,11 +63,13 @@ h2 { font-size: 3rem; }
     background: #ff5976;
     color: white;
     text-align: center;
-    padding: 15px 25px;
+    padding: 25px 35px;
     border-radius: 5px;
     font-weight: bold;
     border: none;
     transition: opacity 0.2s;
+
+    animation: fadeinDrop 1.5s;
 
     &:hover {
         opacity: 0.75
@@ -77,3 +79,49 @@ h2 { font-size: 3rem; }
 .btn--small { padding: 10px; }
 
 /* Helpers */
+
+
+
+/* Quiz */
+
+.quiz-wrap {
+
+    .quiz-imageWrap {
+
+        .quiz-images {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            figure {
+                height: 240px;
+                flex: 1;
+                animation: fadeinDrop 1.5s;
+
+                img {
+                    object-fit: cover;
+                    height: 100%;
+                }
+            }
+
+        }
+
+    }
+
+    .quiz-description {
+        padding: 20px;
+    }
+
+}
+
+/* Animations */
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeinDrop {
+    from { opacity: 0; transform: translateY(-10%) }
+    to   { opacity: 1; }
+}

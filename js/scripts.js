@@ -16,29 +16,56 @@ var Quiz = {
     },
 
     cacheDom: function(){
-        this.$el = $('#play');
+        this.$el       = $('#play');
+        this.template  = this.$el.find('#quiz-template').html();
+        this.$wrap     = this.$el.find('.quiz-wrap');
+
+        this.$loadNewQ = this.$el.find('.quiz-loadNewQ');
     },
 
     bindEvents: function(){
 
         // Catch the show-screen event
         this.$el.on('show', this.start.bind(this));
+
+        // Load new question
+        this.$loadNewQ.on('click', this.loadNewQuestion.bind(this));
     },
 
     start: function(){
 
         var that = this;
 
-        this.answer  = "";
         this.turns   = 0;
         this.correct = 0;
-        this.steak   = 0;
 
         this.render();
     },
 
     render: function() {
-        console.log('now');
+        this.loadNewQuestion()
+    },
+
+    renderQuestion(data){
+        this.$wrap.html(
+            Mustache.render(this.template, data)
+        );
+
+    },
+
+    loadNewQuestion(e){
+
+        $.when(
+            $.ajax({
+                url: this.api + '/questions/',
+            })
+        ).done(function(data){
+            this.renderQuestion(data);
+        }.bind(this));
+
+        if (typeof e === "object") {
+            e.preventDefault();
+        }
     },
 
     getQuestion: function(){

@@ -77,7 +77,6 @@ main {
 */
 .screen {
   display: none;
-  padding: 20px;
   position: relative; }
 
 .screen--initial {
@@ -110,11 +109,12 @@ h2 {
   background: #ff5976;
   color: white;
   text-align: center;
-  padding: 15px 25px;
+  padding: 25px 35px;
   border-radius: 5px;
   font-weight: bold;
   border: none;
-  transition: opacity 0.2s; }
+  transition: opacity 0.2s;
+  animation: fadeinDrop 1.5s; }
   .btn:hover {
     opacity: 0.75; }
 
@@ -122,5 +122,32 @@ h2 {
   padding: 10px; }
 
 /* Helpers */
+/* Quiz */
+.quiz-wrap .quiz-imageWrap .quiz-images {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .quiz-wrap .quiz-imageWrap .quiz-images figure {
+    height: 240px;
+    flex: 1;
+    animation: fadeinDrop 1.5s; }
+    .quiz-wrap .quiz-imageWrap .quiz-images figure img {
+      object-fit: cover;
+      height: 100%; }
+.quiz-wrap .quiz-description {
+  padding: 20px; }
+
+/* Animations */
+@keyframes fadein {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeinDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-10%); }
+  to {
+    opacity: 1; } }
 
 /*# sourceMappingURL=style.css.map */

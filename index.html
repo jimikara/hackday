@@ -32,8 +32,36 @@
             </section>
 
             <section class="screen" data-screen="play" id="play">
-                <h1>Play</h1>
-                <a href="#done" class="btn">Finish</a>
+
+                <div class="quiz-wrap">
+
+                    <script id="quiz-template" type="text/template">
+
+                        <div class="quiz-imageWrap">
+                            <div class="quiz-images">
+                                {{#images}}
+                                    {{#.}}
+                                        <figure>
+                                            <img src="{{image}}" />
+                                        </figure>
+                                    {{/.}}
+                                {{/images}}
+                            </div>
+                        </div>
+
+                        <div class="quiz-description">
+                            <div class="quiz-tofind_inner">{{text}}</div>
+                        </div>
+
+                    </script>
+
+                </div>
+
+                <div class="quiz-footer">
+                    <a href="#" class="btn quiz-loadNewQ">Get new question</a>
+                    <a href="#done" class="btn">Finish</a>
+                </div>
+                
             </section>
 
             <section class="screen" data-screen="done">
