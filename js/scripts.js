@@ -234,6 +234,8 @@ var screens = {
 
         this.$screens.hide();
         this.$currentScreen = this.$screens.filter('[data-screen="' + name + '"]').show().trigger('show');
+        
+        FB.XFBML.parse();
 
     },
 
